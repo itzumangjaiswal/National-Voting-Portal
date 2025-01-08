@@ -1,0 +1,56 @@
+<!-- header.jsp -->
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<header>
+    <a href="/">
+        <img width="368" src="${pageContext.request.contextPath}/images/eci-logo.svg" alt="National Emblem" class="logo">
+    </a>
+
+    <div style="display: flex; align-items: center;">
+        <button class="header-button" id="increaseFontSize" title="Increase Font Size (max:34)">+A</button>
+        <button class="header-button" id="resetFontSize" title="Reset Font Size (16)"> A</button>
+        <button class="header-button" id="decreaseFontSize" title="Decrease Font Size (min:10)">-A</button>
+        <button class="header-button" id="toggleMode" style="font-size: 20px" title="Light/Dark Mode Toggle">&#127767</button>
+    </div>
+</header>
+
+<style>
+    header {
+        display: flex;
+        justify-content: space-between; /* Space between image and buttons */
+        align-items: center;            /* Center align items vertically */
+        padding: 10px;                 /* Optional: add padding for better spacing */
+    }
+
+
+    button {
+        border: none;
+        border-radius: 20px;
+        margin-left: 10px; /* Adds space between buttons */
+    }
+
+    .rotate-180-plus {
+        transform: rotate(180deg);
+        transition: transform 0.8s ease; /* Smooth transition for rotation */
+    }
+
+    .rotate-180-minus {
+        transform: rotate(0deg);
+        transition: transform 0.8s ease; /* Smooth transition for rotation */
+    }
+
+    .header-button {
+        width: 35px;
+        height: 35px;
+        font-size: 10px; /* Adjust font size if necessary */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+</style>
+
+<script type="module">
+    import {jspHeaderLoader} from "${pageContext.request.contextPath}/js/loadHeader.js"
+    document.addEventListener('DOMContentLoaded', jspHeaderLoader)
+</script>

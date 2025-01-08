@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+----------------
+Element: Declaration that defines the document type.
+Purpose: It tells the browser that this is an HTML5 document.
+
+<html lang="en">
+-----------------
+Element: The root element of the HTML document.
+Attributes:
+1.lang="en": Specifies the language of the document as English.
+2.Purpose: Wraps all the content of the HTML page.
+
+<meta charset="UTF-8">
+----------------------
+Element: Meta tag that defines the character encoding.
+Attributes:
+1.charset="UTF-8": Specifies that the document uses UTF-8(Unicode Transformation Format- 8bit) character encoding.
+2.Purpose: Ensures the webpage displays characters correctly, including special characters.
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+-----------------------------------------------------------------------
+Element: Meta tag for responsive design.
+Attributes:
+1.name="viewport": Defines the viewport.
+2.content="width=device-width, initial-scale=1.0": Sets the width of the viewport to the device width and ensures a 1:1 scale for mobile devices.
+3.Purpose: Makes the page responsive, adapting to different screen sizes, especially for mobile devices.
+
+<link rel="icon" href="images/favicon.png" type="image/x-icon">
+-----------------------------------------------------------------
+Element: Links a favicon (small icon displayed on the browser tab).
+Attributes:
+1.rel="icon": Specifies the relationship between the document and the linked resource.
+2.href="images/favicon.png": The location of the favicon image.
+3.type="image/x-icon": Specifies the type of the linked file.
+4.Purpose: Displays a small icon next to the page title in the browser tab.
+
+<head>.....</head>
+--------------------
+Element: Contains meta-information about the document (e.g., title, linked resources).
+Purpose: Provides information to the browser, like encoding and stylesheets.
+
+<header>......</header>
+------------------------
+Element: This is a semantic element that represents the header section of the webpage.
+Purpose: Contains the logo and buttons for adjusting font size and toggling between light/dark modes.
+
+<title>.....</title>
+----------------------------------------------
+Element: Defines the title of the webpage.
+Purpose: Sets the title that appears in the browser tab and when bookmarking the page.
+
+<i>...</i>:This tag is traditionally used for italic text, but in modern HTML, it is often used for icons (especially when using icon libraries like Font Awesome).
+<p>...</p>:Empty paragraph for displaying error messages dynamically, styled to make the text bold.
+<h2>...</h2>:Defines section headings.
+<table>.....</table>: Creates a table.
+<thead>....</thead>: Defines the header section of a table.
+<tr>....</tr>: Defines a row in a table.
+<th>..</th>: Defines a header cell in a table.
+<tbody>....</tbody>: Defines the body section of a table.
+<td>...</td>: Defines a cell in a table.
+<Strong>...</strong>:
+The <strong>...</strong> tag in HTML emphasizes important text, typically rendering it bold.
+<form>...</form>:The <form> tag is used to create an HTML form for user input. All form controls like text boxes, radio buttons, checkboxes, etc., must be placed inside the form element.
+
+<link rel="stylesheet" href="./css/admin_dashboard.css">
+---------------------------------------------------------
+Element: Links to an external CSS file.
+Attributes:
+1.rel="stylesheet": Specifies the relationship as a stylesheet.
+2.href="./css/admin_dashboard.css": Path to the CSS file.
+3.Purpose: Loads the external stylesheet to style the HTML document.
+
+<body>....</body>
+------------------
+Element: This is the main container for the visible content of a webpage.
+Purpose: All the elements you want to display on the page (like text, buttons, modals, etc.) go inside the <body> tag.
+
+id="audit"
+----------
+This gives the div a unique identifier. In this case, the id "audit" might be used for styling, JavaScript manipulation, or linking directly to this section of the page.
+
+<div id="header"></div>
+-----------------------
+Element: A <div> element to contain the header.
+Attributes:
+1.id="header": A unique identifier for the header <div>.
+2.Purpose: Placeholder where the header will be loaded dynamically (probably via the loadHeader.js script).
+
+div id="addTables" class="table-section active">
+--------------------------------------------------
+Element: A section for displaying tables.
+Attributes:
+1.id="addTables": Unique identifier for the section.
+2.class="table-section active": table-section is a class for styling, and active indicates this section is visible by default.
+3.Purpose: Contains the table section that displays consolidated information.
+
+div id="confirmationModal" class="modal">
+-----------------------------------------
+Element: <div> is a block-level container used to group other elements.
+Attributes:
+1.id="confirmationModal": The id attribute is a unique identifier for this <div>. In this case, it's identifying the element as the modal for confirmation.
+2.class="modal": The class attribute is used to assign one or more class names to an element, which can be used for styling with CSS or selecting with JavaScript. Here, modal likely refers to a class used for modal styling (e.g., position, size, background).
+3.Purpose: This <div> represents the modal popup window.
+
+<div id="alert"></div>
+------------------------
+<div>: This tag defines a container for content (block-level element).
+id="alert": The id attribute uniquely identifies this div. It's likely used to display dynamic messages or alerts to the user, such as validation errors or success messages, via JavaScript or backend responses.
+
+<div id="passwordTip" style="display:none; color: #f36a6a;">
+-------------------------------------------------------------
+Element: <div id="passwordTip" style="display:none; color: #f36a6a;">
+This div provides guidelines for the password, which is hidden by default (display:none;), but can be displayed with JavaScript if needed. The text color is set to #f36a6a (a shade of red) to highlight the warning.
+
+iv id="splash">
+-----------------
+Displays a full-screen splash with an animated GIF and a greeting.
+<img src="..." alt="Namaskaram GIF">: Displays the Namaste GIF.
+
+class="fas fa-check-circle":
+----------------------------------
+1.fas: This stands for Font Awesome Solid, indicating that the solid style of the Font Awesome icon set is being used.
+2.fa-check-circle: This specifies the specific icon being used, which is a check mark inside a circle (used to symbolize "approval" or "authorize").
+3.This <i> tag is essentially creating a check mark icon inside the button, making the button's purpose visually clear to the user.
+
+class="fa-solid fa-check-to-slot":
+----------------------------------------
+1.fa-solid: This is a Font Awesome Solid class, indicating that the icon uses the solid style of Font Awesome icons.
+2.fa-check-to-slot: This is the specific Font Awesome icon being used. The check-to-slot icon generally represents a "vote" or "submit" action, symbolizing inserting a vote (the checkmark) into a slot (like a voting box).
+3.The <i> tag renders this specific voting-related icon inside the button, making the purpose of the button (voting) visually clear to the user.
+
+<td class="status-inactive">Inactive</td>
+----------------------------------------------
+1.<td>: This stands for "table data." It defines a cell in a table, and it's used to hold content inside a row (<tr>). In this case, it contains the text "Inactive."
+2.class="status-inactive":
+3.class: An attribute that assigns a CSS class to this table cell. The class "status-inactive" can be used to style the cell based on its status (for example, to make the text red, or grey it out).
+4.Inactive: The text inside the table cell, indicating the status of something (perhaps the user or candidate) as inactive.
+
+<td class="action-icons">
+---------------------------
+1.<td>: Another table data cell, but this time it is meant to hold action buttons or icons for interacting with the data in the row.
+2.class="action-icons":This class is likely used to style the buttons/icons inside the cell, possibly aligning them or giving them specific appearance properties like size, spacing, or layout.
+
+<div class="dashboard-body">
+----------------------------
+Element: A <div> container for the main body content of the dashboard.
+Attributes:
+1.class="dashboard-body": Refers to a CSS class for styling the dashboard body.
+2.Purpose: This is the outermost container for the dashboard content.
+
+div class="container">
+-----------------------
+Element: Another <div> for content.
+Attributes:
+1.class="container": Applies CSS styles for a container.
+2.Purpose: Organizes the content inside, possibly providing width constraints or padding.
+
+<div class="button-bar">
+-------------------------
+Element: A <div> for the button section.
+Attributes:
+1.class="button-bar": CSS class for styling the button area.
+2.Purpose: Contains the buttons used for navigation between different sections.
+
+<div class="section-content">
+------------------------------
+Element: A container for all section content that will be shown or hidden depending on the selected tab.
+Attributes:
+1.class="section-content": CSS class for styling this content area.
+2.Purpose: Holds different sections for display within the dashboard.
+
+<div class="modal-content">
+----------------------------
+Element: Another <div> used to contain the content inside the modal.
+Attributes:
+1.class="modal-content": This class is probably used to style the content of the modal (like padding, font size, etc.).
+2.Purpose: It contains the actual content inside the modal popup, such as the confirmation message and buttons.
+
+<div class="button-container">
+-------------------------------
+Element: A <div> element that groups the two buttons together.
+Attributes:
+1.class="button-container": This class is probably used to apply CSS styles to arrange the buttons (like spacing or alignment).
+2.Purpose: It holds the cancel and confirm buttons, allowing for organized styling of the buttons.
+
+<div class="right-section">
+---------------------------
+Elements:
+class="right-section": This div is styled to represent the right side of the profile, where the candidate details and voting confirmation buttons are placed.
+
+<div class="left-section">
+--------------------------
+Elements:
+class="left-section": This div is styled to represent the left side of the profile, where the candidate details and voting confirmation buttons are placed.
+
+<div class="profile-info-wrapper">
+------------------------------------
+Element: 
+1.class="profile-info-wrapper": This div is used to align the candidate information and the right-side image, likely using a flexbox or grid layout for proper alignment.
+2.Purpose: To align the candidate's details with the image beside it.
+
+<div class="confirmation-buttons">
+----------------------------------
+Elements:
+class="confirmation-buttons": Container that holds the buttons for user interaction.
+
+div class="carousel">
+----------------------
+Element:
+ Displays a carousel with multiple images.
+<img>: Each image in the carousel has its own tag, with dynamic src attributes pointing to different images.
+
+<div class="alert-box failed" id="failedAlert" style="display:none;">
+------------------------------------------------------------------------
+Element: 
+class="alert-box failed": Defines an alert box styled for failure messages.
+id="failedAlert": The ID used to reference this alert box, initially hidden with style="display:none;".
+
+<button id="cancelButton">Cancel</button>
+--------------------------------------------
+Element: <button> is an interactive element that allows the user to click on it to perform an action.
+Attributes:
+1.id="cancelButton": A unique identifier for the cancel button.
+2.Purpose: This button is used to cancel the action, likely closing the modal when clicked.
+
+button id="confirmButton">Confirm</button>
+-------------------------------------------
+Element: Similar to the previous button, but for confirming the action.
+Attributes:
+id="confirmButton": A unique identifier for the confirm button.
+Purpose: This button is used to confirm the action, such as proceeding to another page.
+
+button id="submitButton">Submit</button>
+------------------------------------------
+Elements:
+<button id="submitButton">: Button for form submission.
+attributes:
+id="submitButton": Unique identifier for the submit button.
+
+<button id="noButton" class="btn">Go Back</button>
+---------------------------------------------------
+Elements: <button>
+id="noButton" class="btn": A button labeled "Go Back" for canceling the action or navigating to the previous page.
+
+<button class="tab-button active" data-section="addTables">Consolidated Information</button>
+-----------------------------------------------------------------------------------------------
+Element: A button that acts as a tab for switching sections.
+Attributes:
+1.class="tab-button active": Assigns the tab-button class for styling. active is added to indicate the currently selected tab.
+2.data-section="addTables": A data- attribute that associates the button with the corresponding section (addTables).
+3.Purpose: This button switches to the "Consolidated Information" section.
+
+ Other Buttons:
+ ------------------
+Elements: All buttons follow the same structure, but with different data-section attributes to correspond to different sections:
+Create Election: data-section="createElection"
+Add Regional Officer: data-section="addOfficer"
+Add Candidate: data-section="addCandidate"
+Profile: data-section="audit"
+
+<button class="header-button" id="increaseFontSize" title="Increase Font Size (max:34)">+A</button>
+------------------------------------------------------------------------------------------------------
+Element: Button element that allows user interaction.
+Attributes:
+1.class="header-button": Assigns the header-button class for styling.
+2.id="increaseFontSize": Unique identifier used to apply functionality for increasing font size.
+3.title="Increase Font Size (max:34)": Provides a tooltip that appears when the user hovers over the button, explaining the button’s functionality.
+4.Content: +A – visually shows that the button increases the font size.
+5.Purpose: A button to increase the font size up to a maximum limit (34px).
+
+<button class="header-button" id="resetFontSize" title="Reset Font Size (16)"> A</button>
+-------------------------------------------------------------------------------------------
+Element: Another button for resetting font size to default.
+Attributes:
+1.class="header-button": Applies the same header-button class.
+2.id="resetFontSize": Unique identifier to reset font size.
+3.title="Reset Font Size (16)": Tooltip explaining that this button resets the font size to 16px.
+4.Content: A – signifies font reset to default.
+5.Purpose: Resets the font size to the default value of 16px.
+
+<button class="header-button" id="toggleMode" style="font-size: 20px" title="Light/Dark Mode Toggle">&#127767;</button>
+-------------------------------------------------------------------------------------------------------------------------
+Element: Button to toggle between light and dark mode.
+Attributes:
+1.class="header-button": Applies consistent styling.
+2.id="toggleMode": Unique identifier for toggling light/dark mode.
+3.style="font-size: 20px": Inline CSS that sets the font size to 20px for this button (different from the other buttons).
+4.title="Light/Dark Mode Toggle": Tooltip that explains the functionality.
+5.Content: &#127767; – This is a Unicode character representing a globe icon.
+6.Purpose: Toggles the webpage’s theme between light and dark modes.
+
+<button class="close-btn" onclick="closeAlert('failedAlert')">&times;</button>
+------------------------------------------------------------------------------------------
+Element: 
+class="close-btn": Styles the button to close the alert.
+onclick="closeAlert('failedAlert')": Calls a JavaScript function to close this alert when clicked.
+
+<button type="reset" id="resetButton">Reset</button>
+---------------------------------------------------------
+Elements:
+<button type="reset">: Resets the form to its default state.
+Attributes:
+1.type="reset": The reset button clears all the form fields.
+2.id="resetButton": Unique identifier for the reset button.
+3.Purpose: Provides buttons to submit the form or reset the form fields.
+
+<button class="icon-button icon-authorize" title="Authorize">
+------------------------------------------------------------------
+Element:
+<button>: The <button> element creates a clickable button on the page. This button is used for performing an action (such as authorizing a candidate).
+Attributes:
+1.class="icon-button icon-authorize":
+class: This attribute applies two CSS classes to the button:
+1.icon-button: Likely used to give the button an icon-based design, such as sizing or alignment for buttons with icons.
+2.icon-authorize: This class is probably used for specific styling related to authorization buttons, possibly making the button green or adding other visual cues for "authorize" actions.
+title="Authorize": The title attribute provides a tooltip that appears when the user hovers over the button. In this case, it says "Authorize," indicating the button's purpose.
+
+onclick="confirmAction('/subAdmin/manageAuthority?subAdminId=<%=currentUser.getUserId()%>&candidateId=<%=candidate.getCandidateId()%>')":
+--------------------------------------------------------------------------------------------------------------------------------------
+1.onclick: This attribute defines a JavaScript function that will be executed when the button is clicked.
+2.confirmAction(): This is a JavaScript function (not provided in the code here), likely showing a confirmation dialog before proceeding. The function is called with a URL that includes parameters:
+3./subAdmin/manageAuthority: The base URL to manage the authority of a sub-admin.
+4.?subAdminId=<%=currentUser.getUserId()%>&candidateId=<%=candidate.getCandidateId()%>: These are query parameters being passed to the URL:
+5.<%=currentUser.getUserId()%>: This is server-side code (likely JSP or a similar templating engine) that dynamically injects the current user's ID.
+6.<%=candidate.getCandidateId()%>: This also injects the candidate's ID dynamically into the URL.
+The full URL is dynamically built to send both the sub-admin's ID and the candidate's ID when the button is clicked, making it context-aware for authorization.
+
+<a href="/">
+-------------
+Element: Anchor tag that creates a hyperlink.
+Attributes:
+1.href="/": Specifies the destination URL, in this case, the root of the website (homepage).
+2.Purpose: Clicking the logo will take the user back to the homepage.
+
+<iframe src="/admin/info" title="Admin Tables" width="100%" height="600" style="border:none;"></iframe>
+---------------------------------------------------------------------------------------------------------
+Element: Embeds an external webpage inside the current page.
+Attributes:
+1.src="/admin/info": Specifies the URL of the embedded content.
+2.title="Admin Tables": Provides a title for the iframe, useful for accessibility.
+3.width="100%": Sets the iframe's width to 100% of the parent element.
+4.height="600": Sets the iframe's height to 600 pixels.
+5.style="border:none;": Removes the border around the iframe.
+Purpose: Displays an embedded page showing administrative tables.
+
+.<img width="368" src="images/eci-logo.svg" alt="National Emblem" class="logo">
+---------------------------------------------------------------------------------
+Element: The image tag for displaying an image.
+Attributes:
+1.width="368": Specifies the width of the image in pixels.
+2.src="images/eci-logo.svg": Specifies the source of the image (logo) located in the images folder.
+3.alt="National Emblem": Provides alternative text for accessibility and search engines in case the image doesn’t load.
+4.class="logo": Assigns the logo class for styling purposes.
+5.Purpose: Displays the Election Commission logo and ensures it's accessible with the alt text.
+
+img class="party-logo" src="<%= imgSource%>" alt="Party Logo">
+-----------------------------------------------------------------
+Attributes:
+1.class="party-logo":The class attribute applies the party-logo CSS class to the image. This class is likely used for styling the image, such as adjusting its size, borders, or alignment within the table.
+2.src="<%= imgSource%>":The src (source) attribute specifies the URL or file path of the image to be displayed. In this case, the value of the src attribute is dynamically generated using server-side code:
+3.<%= imgSource %>: This is a JSP expression (or similar server-side templating code), which dynamically inserts the image URL or file path. The imgSource variable is expected to contain the URL of the party logo image.
+4.alt="Party Logo":The alt (alternative text) attribute provides a textual description of the image. If the image cannot be displayed (due to a broken URL or slow loading), this text will be shown instead. In this case, the alt text is "Party Logo", describing the image.
+
+
+<form id="voterForm" action="#" method="post" enctype="multipart/form-data" onsubmit="return validate()">
+------------------------------------------------------------------------------
+Element: The <form> element is used to collect user input.
+Attributes:
+1.id="voterForm": A unique identifier for the form, used for targeting with JavaScript or CSS.
+2.action="#": The URL where the form data will be sent for processing. Here, "#" is a placeholder and indicates that the form won’t submit anywhere.
+3.method="post": Specifies that the form data will be sent using the POST method.
+4.enctype="multipart/form-data": Allows file uploads (for the profile picture).
+5.Purpose: Defines the form, which will submit user data like name, email, profile picture, and passwords.
+onsubmit="return validate()": JavaScript function validate() is called when the form is submitted. If the function returns false, the form will not be submitted.
+
+<input type="text" id="name" name="name" placeholder="Enter your full name">
+------------------------------------------------------------------------------
+Elements:
+<input type="text">: Creates a single-line text input field.
+attributes:
+1.type="text": Specifies that the input is a text field.
+2.id="name": Unique identifier for the input field.
+3.name="name": The name of the input field, used when sending form data.
+4.placeholder="Enter your full name": A hint for the user, shown in the input field before they start typing.
+
+input type="datetime-local" id="start_date" name="start_date" title="dd-mm-yyyy hh:mm">:
+----------------------------------------------------------------------------------------
+1.type="datetime-local": Creates an input field where users can select both a date and time.
+2.id="start_date": Identifies the input field.
+3.name="start_date": The name to be used when sending data to the server.
+4.title="dd-mm-yyyy hh:mm": Tooltip showing the expected date and time format.
+
+<input type="text" id="created_by" placeholder="<%= currentUser.getName()%>" style="cursor: not-allowed;" disabled>:
+--------------------------------------------------------------------------------------------------------------------
+1.type="text": Input type for displaying the creator's name.
+2.placeholder="<%= currentUser.getName()%>": Displays the current user's name dynamically using server-side code.
+3.style="cursor: not-allowed;": CSS to show that this field cannot be modified.
+4.disabled: Prevents the field from being edited by the user.
+
+
+input type="hidden" name="created_by" value="<%= currentUser.getUserId()%>">:
+------------------------------------------------------------------------------
+1.type="hidden": A hidden input field used to store the user ID of the person creating the election. This value will be submitted with the form but is not visible to the user.
+2.name="created_by": Specifies the name for the hidden form data.
+3.value="<%= currentUser.getUserId()%>": Dynamically sets the value to the current user's ID.
+
+<form action="/election/create" method="post" enctype="multipart/form-data">
+-----------------------------------------------------------------------------
+1.<form>: Creates an HTML form to collect user input.
+2.action="/election/create": Specifies the URL (/election/create) where the form data will be submitted.
+3.method="post": Specifies that the form data will be sent via the POST method, which is commonly used to submit data securely.
+4.enctype="multipart/form-data": Indicates that the form is capable of sending files (e.g., image or document uploads).
+
+<label for="name">Full Name:</label>
+---------------------------------------
+Elements:
+<label>: Describes the input field. The for="name" links the label to the input field with the corresponding id="name".
+purpose:Purpose: Collects the user’s full name.
+
+<label for="start_date">Start Date and Time:</label>: 
+-----------------------------------------------------
+Label for the start date field.
+
+
+<option value="drop-down-default" selected style="font-size: 12px">Select an election type</option>:
+----------------------------------------------------------------------------------------------------
+1.<option>: Defines the options inside the dropdown.
+2.value="drop-down-default": The value submitted when this option is selected.
+3.selected: This option is pre-selected when the page loads.
+4.style="font-size: 12px": Adjusts the size of the font for this option.
+
+
+
+
+
+
+
+
+
+
+

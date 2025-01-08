@@ -1,0 +1,760 @@
+Report On JSP files in Voting system
+
+1. admin 
+	-admin_consolidated_info.jsp	
+		
+2. Candidate 
+	-s_candidate_registration.jsp
+
+3. election 
+	-election_creation_form.jsp		
+
+4.subAdmin 
+	-s_registration.jsp
+	-s_subAdmin_consolidated_info.jsp
+	-u_pending_voters.jsp
+
+5.Voter    
+	-voting_table.jsp	
+	
+6.alert.jsp
+7.eerorPage.jsp
+8.forgotPassword.jsp
+9.header.jsp
+10.index.jsp
+11.profile.jsp
+12.test.jsp
+
+
+
+1. admin -> admin_consolidated_info
+
+
+<%@ page import="java.util.List" %>
+Imports the List class from the java.util package for handling lists in Java.
+
+<%@ page import="com.votingSystem.entity.Election" %>
+Imports the Election entity from the project's package to use its properties and methods.
+
+<%@ page import="com.votingSystem.entity.User" %>
+Imports the User entity from the project's package to access user details.
+
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+Defines the content type and character encoding for the JSP page, ensuring that it renders properly in the browser.
+
+<% List<Election> allElections = (List<Election>) request.getAttribute("allOngoingElections"); %>
+Scriptlet used to get the list of ongoing elections from the request attributes and store it in a local variable.
+
+<% List<User> allSubAdmins = (List<User>) request.getAttribute("allSubAdmins"); %>
+Scriptlet that fetches the list of sub-admins from the request attributes and assigns it to a local list.
+
+<%= user.getUserId() %>
+Expression tag used to display the sub-admin's user ID in the HTML content.
+
+<%= election.getElectionId() %>
+Expression tag used to dynamically display the election's ID in the table.
+
+<% if (!allSubAdmins.isEmpty()){ %>
+Scriptlet used to check if the list of sub-admins is not empty before rendering their data in the HTML.
+
+<% for(User user : allSubAdmins){ %>
+For-each loop using a scriptlet to iterate over the list of sub-admins and render their details in the table.
+
+<% }else{ %>
+Scriptlet used to display an alternative message if the list of sub-admins or elections is empty.
+
+<%= election.getStartDate() %>
+Expression tag used to display the start date of an election dynamically.
+
+
+2.Candidate ->  s_candidate_registration.jsp
+
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+Defines the content type and character encoding to ensure proper rendering.
+
+<% String tokenExpired = (String) request.getAttribute("tokenExpired"); %>
+Gets the tokenExpired attribute from the request to handle session expiration.
+
+<script> ... if (tokenExpired === "true") ... </script>
+Handles redirect to the login page if the token has expired.
+
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/globalAlert.css">
+Loads the global alert styles for showing success or failure alerts.
+
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/forms.css">
+Loads the CSS for form styling.
+
+<% String errorMessage = (String) request.getAttribute("error"); %>
+Fetches any error message passed in the request.
+
+<% String successMessage = (String) request.getAttribute("success"); %>
+Fetches any success message passed in the request.
+
+<form action="/candidate/register" method="post" enctype="multipart/form-data" onsubmit="return validateFormBeforeSubmit()">
+Creates the candidate registration form, set to POST data and files to `/candidate/register`.
+
+<input type="text" id="name" name="name" placeholder="Enter Candidate Full Name">
+Input field for candidate's full name with a max length of 30 characters.
+
+<input type="text" id="description" name="description" placeholder="Will be shown to Voters">
+Input field for candidate description, displayed to voters, max 60 characters.
+
+<input type="text" id="aadharNumber" name="aadharNumber" placeholder="e.g. 1234-5678-9012">
+Input field for a 12-digit Aadhaar number, automatically formatted with dashes.
+
+<input type="file" id="profilePic" name="profilePic" accept="image/*">
+Input field to upload the candidate's profile picture (image).
+
+<input type="text" id="partyName" name="partyName" placeholder="Enter Candidate Party Name">
+Input field for the candidate's party name with a max length of 45 characters.
+
+<input type="file" id="partyLogo" name="partyLogo" accept="image/*">
+Input field to upload the candidate's party logo (image).
+
+<input type="hidden" id="createdBy" name="createdBy" value=4>
+Hidden input field that stores the ID of the person creating the candidate record.
+
+<button type="reset" id="resetButton">Reset</button>
+Resets the form to its default state.
+
+<button id="submitButton">Submit</button>
+Submits the form, triggering the validation function.
+
+<script> ... validateFormBeforeSubmit() ... </script>
+JavaScript function that validates the form before submission, ensuring all fields meet requirements.
+
+<div class="alert-box failed" id="failedAlert" style="display:none;">
+Div for displaying error messages, hidden by default.
+
+<div class="alert-box success" id="successAlert" style="display:none;">
+Div for displaying success messages, hidden by default.
+
+function addSpaces(elementId)
+Function to auto-format the Aadhaar number by adding dashes after every 4 digits.
+
+
+3.election --->	election_creation_form.jsp	
+
+<%@ page import="java.util.List" %>
+Imports the `List` class to manage lists of objects (like users).
+
+<%@ page import="com.votingSystem.entity.User" %>
+Imports the `User` class to work with user-related data.
+
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+Defines the page content type and language for proper rendering and encoding.
+
+<jsp:include page="../alert.jsp"/>
+Includes the `alert.jsp` file, which is likely used for showing alert messages.
+
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/forms.css">
+Loads CSS for form styling.
+
+List<User> subAdmins = (List<User>) request.getAttribute("allSubAdmins");
+Retrieves a list of sub-admins from the request object.
+
+User currentUser = (User) request.getAttribute("currentUser");
+Retrieves the currently logged-in user from the request object.
+
+<h2 style="color: black">Create New Election</h2>
+Header for the "Create New Election" page.
+
+<form action="/election/create" method="post" enctype="multipart/form-data">
+Creates the election form, with data submitted to `/election/create`.
+
+<input type="text" id="name" name="name" placeholder="Enter Election Name">
+Input field for entering the election's name.
+
+<select id="election_type" name="election_type">
+Dropdown for selecting the election type (e.g., Lok Sabha, Rajya Sabha).
+
+<input type="datetime-local" id="start_date" name="start_date">
+Input field for selecting the start date and time of the election.
+
+<input type="datetime-local" id="end_date" name="end_date">
+Input field for selecting the end date and time of the election.
+
+<select id="assign_to" name="assignedTo">
+Dropdown for selecting the regional officer (sub-admin) responsible for the election.
+
+if (subAdmins.isEmpty()) { ... }
+Checks if there are no available sub-admins to assign as regional officers.
+
+for (User subAdmin : subAdmins) { ... }
+Loops through the list of sub-admins and displays each as an option in the dropdown.
+
+<input type="text" id="created_by" placeholder="<%= currentUser.getName()%>" disabled>
+Displays the name of the currently logged-in user, who is creating the election (disabled for editing).
+
+<input type="hidden" name="created_by" value="<%= currentUser.getUserId()%>">
+Hidden field that stores the current user's ID, representing the election creator.
+
+<button type="reset" id="resetButton">Reset</button>
+Resets the form fields to their default state.
+
+<button type="submit" id="submitButton">Submit</button>
+Submits the election creation form data.
+
+
+4.subAdmin --> s_registration.jsp
+
+
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+Sets the content type and encoding for the page to ensure proper text display.
+
+String tokenExpired = (String) request.getAttribute("tokenExpired");
+Retrieves the token expiration status from the request object.
+
+<script>
+    //handle token expiry redirect
+    if (tokenExpired === "true") {
+        window.top.location.href = "/"
+    }
+</script>
+JavaScript code that redirects the user to the home page if the token is expired.
+
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/globalAlert.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/forms.css">
+Includes external CSS files for styling alerts and forms.
+
+String errorMessage = (String) request.getAttribute("error");
+String successMessage = (String) request.getAttribute("success");
+Retrieves error and success messages from the request object.
+
+if (errorMessage != null) { ... }
+Displays an error message alert if there is a failure during registration.
+
+if (successMessage != null) { ... }
+Displays a success message alert if the registration is successful.
+
+<form action="/subAdmin/register" method="post" enctype="multipart/form-data">
+Creates a form for registering a new sub-admin, with the action submitted to `/subAdmin/register`.
+
+<input type="text" id="name" name="name" placeholder="Enter your full name">
+Input field for entering the sub-admin's full name.
+
+<input type="email" id="email" name="email" placeholder="Enter your email">
+Input field for entering the sub-admin's email address.
+
+<input type="text" id="aadharNumber" name="aadharNumber" placeholder="e.g. 1234-5678-9012">
+Input field for entering the 12-digit Aadhaar number, with automatic dash formatting.
+
+<input type="file" id="profilePic" name="profilePic" accept="image/*">
+Input field for uploading the sub-admin's profile picture.
+
+<input type="password" id="password" name="password" placeholder="Enter your password">
+Input field for entering the sub-admin's password.
+
+<input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password">
+Input field for confirming the sub-admin's password.
+
+<button type="reset" id="resetButton">Reset</button>
+Resets the form fields to their default values.
+
+<button type="submit" id="submitButton">Submit</button>
+Submits the form data to register a new sub-admin.
+
+<script>
+    function addSpaces(elementId) {
+        let element = document.getElementById(elementId);
+        if (element.value.length === 4 || element.value.length === 9) {
+            element.value = element.value + '-';
+        }
+    }
+</script>
+JavaScript function that automatically adds dashes after every 4th and 9th character in the Aadhaar number input.
+
+
+4.subAdmin  ---> s_subAdmin_consolidated_info
+			
+<%@ page import="java.util.List" %>
+<%@ page import="com.votingSystem.entity.Election" %>
+<%@ page import="com.votingSystem.entity.Candidate" %>
+<%@ page import="com.votingSystem.entity.User" %>
+Imports necessary classes for working with `Election`, `Candidate`, and `User` objects.
+
+List<Election> allElections = (List<Election>) request.getAttribute("allElections");
+List<Candidate> allCandidates = (List<Candidate>) request.getAttribute("allCandidates");
+User currentUser = (User) request.getAttribute("currentUser");
+Retrieves the list of elections, candidates, and the current user from the request attributes.
+
+<h2 style="color: black">All Election Information</h2>
+Displays the header for the elections table.
+
+<table> ... </table>
+Creates a table displaying details of all available elections, including `ID`, `Name`, `Type`, `Start Date`, `End Date`, `Created By`, and `Managed By`.
+
+if(!allElections.isEmpty()) { ... }
+Loops through all elections and dynamically populates the table rows with election data.
+
+<h2 style="color: black">All Candidates Information</h2>
+Displays the header for the candidates table.
+
+<table> ... </table>
+Creates a table displaying details of all available candidates, including `ID`, `Name`, `Aadhaar Number`, `Party Name`, `Authority`, and `Manage Authority`.
+
+if (!allCandidates.isEmpty()) { ... }
+Loops through all candidates and dynamically populates the table rows with candidate data.
+
+if(candidate.isCandidatureRevoked()) { ... }
+Checks if the candidate's authority is revoked and sets their status as "Inactive" with an option to authorize them.
+
+<button class="icon-button icon-authorize" title="Authorize" onclick="confirmAction('/subAdmin/manageAuthority?subAdminId=<%=currentUser.getUserId()%>&candidateId=<%=candidate.getCandidateId()%>')">
+Displays the button to authorize an inactive candidate, triggering a confirmation modal before proceeding.
+
+<button class="icon-button icon-revoke" title="Revoke Authority" onclick="confirmAction('/subAdmin/manageAuthority?subAdminId=<%=currentUser.getUserId()%>&candidateId=<%=candidate.getCandidateId()%>')">
+Displays the button to revoke the authority of an active candidate, also triggering a confirmation modal.
+
+<!-- Confirmation Modal -->
+<div id="confirmationModal" class="modal" style="display: none">
+Creates a hidden confirmation modal, asking the user to confirm before taking action (authorize/revoke).
+
+<script>
+    function confirmAction(actionUrl) {
+        const modal = document.getElementById('confirmationModal');
+        modal.style.display = 'block';
+
+        document.getElementById('confirmButton').onclick = function () {
+            window.top.location.href = actionUrl;
+        };
+
+        document.getElementById('cancelButton').onclick = function () {
+            modal.style.display = 'none';
+        };
+    }
+</script>
+JavaScript function that handles the confirmation modal, redirecting the user to the specified action URL upon confirmation or closing the modal if canceled.
+
+
+4.subAdmin  ---> u_pending_voters
+
+<%@ page import="java.util.List"%>
+<%@ page import="com.votingSystem.entity.User"%>
+<%@ page import="java.net.URLEncoder"%>
+Imports necessary classes, including `User` for handling voters and `URLEncoder` for URL encoding.
+
+List<User> allVoters = (List<User>) request.getAttribute("allVoters");
+User currentUser = (User)request.getAttribute("currentUser");
+Retrieves the list of all pending voters and the current sub-admin user from request attributes.
+
+<h2 style="color: black">All Pending Voters Information</h2>
+Displays the heading for the pending voters table.
+
+<table> ... </table>
+Creates a table displaying pending voters with columns for `ID`, `Name`, `Email`, `Aadhaar Number`, and actions for disapproval and approval.
+
+if (allVoters != null && !allVoters.isEmpty()) { ... }
+Loops through the list of voters and dynamically populates the table with voter data.
+
+<button class="icon-button icon-revoke" title="Move to Rejection list" onclick="openRejectionModal(<%=user.getUserId()%>, <%=currentUser.getUserId()%>)">
+Displays a button to reject a voter, triggering a rejection modal where the sub-admin can enter a rejection reason.
+
+<button class="icon-button icon-authorize" title="Approve Now" onclick="confirmAction('/subAdmin/manageVoters?subAdminId=<%=currentUser.getUserId()%>&voterId=<%=user.getUserId()%>')">
+Displays a button to approve the voter, triggering a confirmation modal before proceeding with the action.
+
+<!-- Confirmation Modal -->
+<div id="confirmationModal" class="modal" style="display: none">
+Creates a hidden confirmation modal that appears when the sub-admin clicks to approve a voter.
+
+<!-- Rejection Modal -->
+<div id="rejectionModal" class="modal" style="display: none">
+Creates a hidden rejection modal where the sub-admin can enter a rejection reason and submit the disapproval of a voter.
+
+<form action="/subAdmin/rejectVoterWithReason" method="Post">
+Submits the voter rejection form with the entered reason, voter ID, and rejector ID.
+
+<script>
+let globalVoterId = null;
+let globalRejectorId = null;
+Declares global variables to store the selected voter and rejector IDs for the rejection process.
+
+function confirmAction(actionUrl) {
+    const modal = document.getElementById('confirmationModal');
+    modal.style.display = 'block';
+
+    document.getElementById('confirmButton').onclick = function () {
+        window.top.location.href = actionUrl;
+    };
+
+    document.getElementById('cancelButton').onclick = function () {
+        modal.style.display = 'none';
+    };
+}
+Handles the display of the approval confirmation modal and confirms or cancels the action.
+
+function openRejectionModal(voterId, rejectorId) {
+    const modal = document.getElementById('rejectionModal');
+    modal.style.display = 'block';
+
+    document.getElementById('voterId').value = voterId;
+    document.getElementById('rejectorId').value = rejectorId;
+Handles the display of the rejection modal, passing the voter and rejector IDs to the modal form.
+
+document.getElementById('cancelRejectionButton').onclick = function () {
+    modal.style.display = 'none';
+};
+Handles the cancel action for the rejection modal.
+</script>
+
+
+5..Voter   --->	voting_table.jsp
+
+<%@ page import="java.util.List" %>
+<%@ page import="com.votingSystem.entity.User" %>
+<%@ page import="java.net.URLEncoder" %>
+
+<!-- Imports necessary classes, including `User` for handling voters and `URLEncoder` for URL encoding -->
+
+List<User> allVoters = (List<User>) request.getAttribute("allVoters");
+User currentUser = (User)request.getAttribute("currentUser");
+
+<!-- Retrieves the list of all pending voters and the current sub-admin user from the request -->
+
+<h2 style="color: black">All Pending Voters Information</h2>
+
+<!-- Displays the heading for the pending voters table -->
+
+<table>
+    <!-- Creates a table displaying pending voters with columns for `ID`, `Name`, `Email`, and `Action` -->
+</table>
+
+<%
+    if (allVoters != null && !allVoters.isEmpty()) {
+        for (User voter : allVoters) {
+            // Loops through the list of voters and dynamically populates the table with voter data
+%>
+    <tr>
+        <td><%= voter.getId() %></td>
+        <td><%= voter.getName() %></td>
+        <td><%= voter.getEmail() %></td>
+        <td>
+            <button onclick="approveVoter('<%= voter.getId() %>')">Approve</button>
+            <button onclick="disapproveVoter('<%= voter.getId() %>')">Disapprove</button>
+        </td>
+    </tr>
+<%
+        }
+    }
+%>
+
+<!-- Adds buttons for approving or disapproving each voter -->
+
+
+
+6.alert.jsp
+
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>  
+Sets the content type and character encoding for the JSP page.
+
+<% String tokenExpired = (String) request.getAttribute("tokenExpired"); %>  
+Retrieves the `tokenExpired` attribute from the request, used for checking token expiration.
+
+<script>
+    var tokenExpired = "<%= tokenExpired %>";
+    if (tokenExpired === "true") {
+        window.top.location.href = "/";  // Redirects to the home page if the token has expired.
+    }
+</script>
+
+<%  
+    String errorMessage = (String) request.getAttribute("error");  
+    String successMessage = (String) request.getAttribute("success");  
+%>  
+Retrieves error and success messages from the request attributes.
+
+<% if (errorMessage != null) { %>  
+<script type="module">
+    import { showAlert } from '${pageContext.request.contextPath}/js/globalAlert.js';
+    showAlert('failed', '<%= errorMessage %>');  // Displays an error alert if `errorMessage` exists.
+</script>
+<% } %>
+
+<% if (successMessage != null) { %>  
+<script type="module">
+    import { showAlert } from '${pageContext.request.contextPath}/js/globalAlert.js';
+    showAlert('success', '<%= successMessage %>');  // Displays a success alert if `successMessage` exists.
+</script>
+<% } %>
+
+
+7.errorPage.jsp
+
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>  
+Sets the content type to HTML with UTF-8 encoding and specifies Java as the scripting language.
+
+<!DOCTYPE html>  
+Defines the document type as HTML5.
+
+<html lang="en">  
+Specifies the language of the document as English.
+
+<head>  
+Contains meta-information, links, and styling for the HTML document.
+
+<meta charset="UTF-8">  
+Specifies the character encoding for the HTML document as UTF-8.
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+Ensures proper scaling and responsiveness on different devices.
+
+<link rel="icon" href="${pageContext.request.contextPath}/images/favicon.png" type="image/x-icon">  
+Loads the favicon for the page from the images directory.
+
+<title>ECI | Application Error</title>  
+Sets the title of the page to "ECI | Application Error."
+
+<style>  
+Defines the styles for the page, including body layout, error container, animations, and button styling.
+
+body { display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #f2f2f2; margin: 0; }  
+Defines the layout for the body, centering content both vertically and horizontally.
+
+.error-container { text-align: center; animation: fadeIn 2s ease-in-out; }  
+Applies a fade-in animation to the error container over 2 seconds.
+
+@keyframes fadeIn { ... }  
+Defines the fade-in animation for the error container.
+
+h1 { color: #ff4c4c; font-size: 48px; margin-bottom: 10px; }  
+Styles the error message heading, setting the color and font size.
+
+p { font-size: 18px; color: #333; }  
+Styles the paragraph text, setting the font size and color.
+
+.back-home { ... }  
+Styles the "Go Back" button, including hover effects and transitions.
+
+</style>  
+Closes the style block.
+
+<body>  
+Contains the main content of the page.
+
+<div class="error-container">  
+Wraps the error message and image in a container.
+
+<img src="${pageContext.request.contextPath}/images/error-bg.png" alt="Error Image" class="error-image">  
+Displays an error image loaded from the `images` directory.
+
+<p>We can't seem to find the resource you're looking for.</p>  
+Displays a general error message.
+
+<p style="color: red">${message}</p>  
+Displays an error message dynamically passed from the server in red text.
+
+<a onclick="goBack()" class="back-home">Go Back</a>  
+Creates a "Go Back" button that triggers the `goBack()` JavaScript function.
+
+</div>  
+Closes the error container.
+
+<script>  
+Contains JavaScript code.
+
+function goBack() {  
+    window.history.back();  // Returns to the previous page when the "Go Back" button is clicked.
+}  
+</script>  
+Closes the script block.
+
+
+8.8.index.jsp
+
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+Sets the page's content type to UTF-8 to handle special characters correctly.
+
+<%
+    String tokenExpired = (String) request.getAttribute("tokenExpired");
+%>
+Retrieves the `tokenExpired` attribute from the request to check if the user's session token has expired.
+
+<!DOCTYPE html>
+Defines the document type as HTML5.
+
+<html lang="en">
+Specifies the language of the document as English.
+
+<head>
+Contains meta tags, scripts, and stylesheets for the page.
+
+<script>
+JavaScript code to handle token expiry. If `tokenExpired` is true, it redirects the user to the homepage.
+
+<meta charset="UTF-8">
+Specifies UTF-8 character encoding.
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+Ensures the page is responsive across all devices.
+
+<link rel="icon" href="${pageContext.request.contextPath}/images/favicon.png" type="image/x-icon">
+Loads the favicon for the page.
+
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/index.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/globalAlert.css">
+Includes the main stylesheet and an alert stylesheet for the page's design.
+
+<title>Election Commission Of India</title>
+Sets the page title to "Election Commission Of India."
+
+<body>
+Contains the main body content.
+
+<%
+    String errorMessage = (String) request.getAttribute("error");
+    String successMessage = (String) request.getAttribute("success");
+%>
+Retrieves any error or success messages from the request.
+
+<div id="alert"></div>
+Placeholder for alert messages.
+
+<%
+    if (errorMessage != null) {
+%>
+<script type="module">
+    // Display error message if present
+    import { showAlert } from '${pageContext.request.contextPath}/js/globalAlert.js';
+    showAlert('failed', '<%= errorMessage %>');
+</script>
+Displays a failure alert if there is an error message.
+
+<%
+    }
+    if (successMessage != null) {
+%>
+<script type="module">
+    // Display success message if present
+    import { showAlert } from '${pageContext.request.contextPath}/js/globalAlert.js';
+    showAlert('success', '<%= successMessage %>');
+</script>
+Displays a success alert if there is a success message.
+
+<!-- Include header here -->
+<header>
+Creates a header with the National Emblem and Election Commission of India logo.
+
+<div id="splash">
+Full-screen splash with a greeting and animation (namaste GIF).
+
+<!-- Main Content -->
+<div class="content">
+The main page content, including a login form and a rotating carousel of images.
+
+Carousel JavaScript functionality cycles through images every 3 seconds after the splash fades out.
+
+<script type="module">
+JavaScript for alerts, checking if there is a logout message stored in session storage, and displaying it if present.
+</script>
+
+</body>
+</html>
+
+
+9.profile.jsp
+
+<%@ page import="java.util.Map" %>
+Imports the `Map` class to handle user details.
+
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+Sets the content type and character encoding for the page.
+
+<!DOCTYPE html>
+Defines the document type as HTML5.
+
+<html lang="en">
+Specifies the document language as English.
+
+<head>
+Contains meta information, styles, and scripts for the page.
+
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/profile.css">
+Links to an external CSS file for styling the profile page.
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+Includes FontAwesome for icons used in the design.
+
+</head>
+<body>
+
+<%
+    String cloudinaryPrefix = "https://res.cloudinary.com/dl1hqxniz/image/upload/v1727458264/";
+    Map<String, String> userDetails = (Map<String, String>) request.getAttribute("userDetails");
+    String imageLink = cloudinaryPrefix + userDetails.get("imagePublicId");
+%>
+Retrieves user details from the request attribute and constructs the image link.
+
+<div class="profile-container">
+The main container for the user profile.
+
+    <div class="left-section">
+    Left section containing the profile picture and update button.
+
+        <div class="profile-picture">
+            <img src="<%= imageLink %>" alt="Profile Picture">
+        </div>
+        Displays the user's profile picture.
+
+        <div class="update-picture">
+            <button class="btn" disabled>Update Picture</button>
+        </div>
+        Disabled button for updating the profile picture.
+
+    </div>
+
+    <div class="right-section">
+    Right section containing user profile details.
+
+        <div class="profile-details">
+            <h2>Profile Details</h2>
+            Header for profile details section.
+
+            <button id="logout-btn" class="logout-button">Logout</button>
+            Logout button for the user to log out.
+
+            <div class="profile-info">
+                <p id="profile_role" style="color: red;font-weight: bolder;font-size: large;"> <%= userDetails.get("role") %> </p>
+            </div>
+            Displays the user's role in bold red text.
+
+            <div class="profile-info">
+                <label for="profile-id">Id:</label>
+                <p id="profile-id"><%= userDetails.get("userId") %></p>
+            </div>
+            Displays the user's ID.
+
+            <div class="profile-info">
+                <label for="profile-name">Name:</label>
+                <p id="profile-name"><%= userDetails.get("name") %></p>
+            </div>
+            Displays the user's name.
+
+            <div class="profile-info">
+                <label for="profile-email">Email:</label>
+                <p id="profile-email"><%= userDetails.get("email") %></p>
+            </div>
+            Displays the user's email address.
+
+            <div class="profile-info">
+                <label for="profile-id">Aadhaar Number:</label>
+                <p id="aadharNumber"><%= userDetails.get("aadharNumber") %></p>
+            </div>
+            Displays the user's Aadhaar number.
+        </div>
+    </div>
+</div>
+
+<script>
+    btn = document.getElementById('logout-btn')
+    btn.addEventListener('click', () => {
+        document.cookie = "token=NA; Max-Age=0; Path=/;"; // Clears the token cookie.
+        sessionStorage.setItem('logoutMessage', 'Logged Out!'); // Stores a logout message.
+        window.top.location.href = '/'; // Redirects to the homepage.
+    })
+</script>
+JavaScript to handle the logout functionality when the button is clicked.
+
+</body>
+</html>
+
+10.test.jsp
+

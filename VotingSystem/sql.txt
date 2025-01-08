@@ -1,0 +1,73 @@
+INSERT INTO election (assinged_to, created_by, election_name, election_type, end_date, start_date) VALUES
+(19, 1, 'India General Election', 'Lok Sabha', '2024-05-20', '2024-03-01'),
+(4, 2, 'State Assembly Election', 'Rajya Sabha', '2023-10-10', '2023-08-01'),
+(11, 3, 'City Municipal Election', 'Municipal Corporation', '2023-12-15', '2023-10-05'),
+(7, 4, 'National Election', 'Lok Sabha', '2025-07-01', '2025-05-01'),
+(15, 1, 'Urban Municipality Election', 'Municipal Corporation', '2024-04-20', '2024-02-15'),
+(10, 2, 'State Senate Election', 'Rajya Sabha', '2025-03-10', '2024-12-10'),
+(6, 3, 'Capital City Election', 'Municipal Corporation', '2023-11-30', '2023-09-25'),
+(2, 4, 'National Election Phase 1', 'Lok Sabha', '2024-08-15', '2024-06-10'),
+(8, 1, 'Provincial Election', 'Rajya Sabha', '2024-10-05', '2024-07-20'),
+(17, 2, 'City Council Election', 'Municipal Corporation', '2023-09-25', '2023-07-10'),
+(13, 3, 'State Election Round 2', 'Lok Sabha', '2025-01-01', '2024-11-01'),
+(3, 4, 'State General Election', 'Rajya Sabha', '2023-12-05', '2023-10-01'),
+(16, 1, 'Township Election', 'Municipal Corporation', '2023-10-20', '2023-09-01'),
+(9, 2, 'National Election Final Round', 'Lok Sabha', '2025-06-15', '2025-04-10'),
+(12, 3, 'Urban Election Phase 1', 'Municipal Corporation', '2023-11-10', '2023-09-05'),
+(5, 4, 'State Council Election', 'Rajya Sabha', '2023-09-30', '2023-07-20'),
+(18, 1, 'National Election Phase 2', 'Lok Sabha', '2024-05-30', '2024-03-10'),
+(1, 2, 'City Municipality Election', 'Municipal Corporation', '2024-04-05', '2024-02-25'),
+(20, 3, 'Provincial Council Election', 'Rajya Sabha', '2024-12-15', '2024-10-01'),
+(14, 4, 'Local Election Phase 1', 'Municipal Corporation', '2023-10-01', '2023-08-01');
+
+
+
+INSERT INTO users (aadhar_number, created_by, email, is_authority_revoked, name, password, profile_picture_id, role) VALUES
+('123456781234', 1, 'upRegion@subadmin.com', 0, 'Rahul Vats', '123', 1, 2),
+('234567892345', 2, 'westRegion@subadmin.com', 0, 'Priya Singh', '456', 2, 2),
+('345678903456', 3, 'eastRegion@subadmin.com', 1, 'Amit Sharma', '789', 3, 2),
+('456789014567', 4, 'southRegion@subadmin.com', 0, 'Anjali Mehra', '101', 4, 2),
+('567890125678', 1, 'northRegion@subadmin.com', 1, 'Vikram Joshi', '102', 5, 2),
+('678901236789', 2, 'centralRegion@subadmin.com', 0, 'Pooja Patel', '103', 6, 2),
+('789012347890', 3, 'subRegion1@subadmin.com', 1, 'Rohit Verma', '104', 7, 2),
+('890123458901', 4, 'subRegion2@subadmin.com', 0, 'Sneha Desai', '105', 8, 2),
+('901234569012', 1, 'westZone@subadmin.com', 0, 'Manish Gupta', '106', 9, 2),
+('112345670123', 2, 'northZone@subadmin.com', 1, 'Karan Rao', '107', 10, 2),
+('223456781234', 3, 'southZone@subadmin.com', 0, 'Sanjana Nair', '108', 11, 2),
+('334567892345', 4, 'centralZone@subadmin.com', 1, 'Rahul Patel', '109', 12, 2),
+('445678903456', 1, 'upRegion1@subadmin.com', 0, 'Geeta Kapoor', '110', 13, 2),
+('556789014567', 2, 'westRegion2@subadmin.com', 0, 'Suresh Yadav', '111', 14, 2),
+('667890125678', 3, 'eastRegion1@subadmin.com', 1, 'Ritika Jain', '112', 15, 2),
+('778901236789', 4, 'southRegion2@subadmin.com', 0, 'Siddharth Menon', '113', 16, 2),
+('889012347890', 1, 'northRegion1@subadmin.com', 1, 'Preeti Kumar', '114', 17, 2),
+('990123458901', 2, 'centralRegion2@subadmin.com', 0, 'Arun Sinha', '115', 18, 2),
+('101234569012', 3, 'subRegion3@subadmin.com', 0, 'Neha Thakur', '116', 19, 2),
+('112345670123', 4, 'subRegion4@subadmin.com', 1, 'Vivek Singh', '117', 20, 2);
+
+
+//Adding voter data in users table (Generated)
+
+INSERT INTO user (aadhar_number, created_by, email, is_authority_revoked, name, password, profile_picture_id, role, is_approved) VALUES
+('123456781235', 1, 'arjun.sharma@gmail.com', 0, 'Arjun Sharma', '123', 1, 3, 0),
+('123456781236', 1, 'ananya.verma@gmail.com', 0, 'Ananya Verma', '123', 1, 3, 0),
+('123456781237', 1, 'vivek.patel@gmail.com', 0, 'Vivek Patel', '123', 1, 3, 0),
+('123456781238', 1, 'neha.kapoor@gmail.com', 0, 'Neha Kapoor', '123', 1, 3, 0),
+('123456781239', 1, 'aditya.singh@gmail.com', 0, 'Aditya Singh', '123', 1, 3, 0),
+('123456781240', 1, 'isha.dubey@gmail.com', 0, 'Isha Dubey', '123', 1, 3, 0),
+('123456781241', 1, 'akash.gupta@gmail.com', 0, 'Akash Gupta', '123', 1, 3, 0),
+('123456781242', 1, 'megha.jain@gmail.com', 0, 'Megha Jain', '123', 1, 3, 0),
+('123456781243', 1, 'rajesh.malhotra@gmail.com', 0, 'Rajesh Malhotra', '123', 1, 3, 0),
+('123456781244', 1, 'kavya.mishra@gmail.com', 0, 'Kavya Mishra', '123', 1, 3, 0),
+('123456781245', 1, 'nilesh.bhatt@gmail.com', 0, 'Nilesh Bhatt', '123', 1, 3, 0),
+('123456781246', 1, 'priya.iyer@gmail.com', 0, 'Priya Iyer', '123', 1, 3, 0),
+('123456781247', 1, 'gautam.chawla@gmail.com', 0, 'Gautam Chawla', '123', 1, 3, 0),
+('123456781248', 1, 'deepa.shetty@gmail.com', 0, 'Deepa Shetty', '123', 1, 3, 0),
+('123456781249', 1, 'rohan.desai@gmail.com', 0, 'Rohan Desai', '123', 1, 3, 0),
+('123456781250', 1, 'rekha.nair@gmail.com', 0, 'Rekha Nair', '123', 1, 3, 0),
+('123456781251', 1, 'siddharth.pande@gmail.com', 0, 'Siddharth Pande', '123', 1, 3, 0),
+('123456781252', 1, 'jyoti.goswami@gmail.com', 0, 'Jyoti Goswami', '123', 1, 3, 0),
+('123456781253', 1, 'manish.sahni@gmail.com', 0, 'Manish Sahni', '123', 1, 3, 0),
+('123456781254', 1, 'anita.kulkarni@gmail.com', 0, 'Anita Kulkarni', '123', 1, 3, 0);
+
+
+

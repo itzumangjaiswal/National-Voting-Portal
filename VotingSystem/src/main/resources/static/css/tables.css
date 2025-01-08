@@ -1,0 +1,85 @@
+h2{
+    background-color: #f2f2f2;
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+    border-left: 4px #C78A00 solid;
+    border-radius: 4px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 20px;
+    overflow-x: hidden;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0 60px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 12px 20px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f2f2f2;
+    border-bottom: 2px solid #007bff;
+    color: #333;
+}
+caption {
+    font-size: 1.5em;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Add shadow */
+}
+tr:hover {
+    background-color: #05183e;
+    color: #f1e7d5;
+}
+
+td {
+    border-bottom: 1px solid #ddd;
+}
+
+.status-active {
+    color: green;
+    font-weight: bold;
+}
+
+.status-inactive {
+    color: red;
+    font-weight: bold;
+}
+
+/* Styling for action buttons */
+.action-icons {
+    text-align: center;
+}
+
+.icon-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 28px;
+    margin-right: 15px;
+    color: #007bff;
+}
+
+.icon-button:hover {
+    color: #0056b3;
+}
+
+.icon-authorize {
+    color: green;
+}
+
+.icon-revoke {
+    color: red;
+}

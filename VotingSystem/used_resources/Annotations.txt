@@ -1,0 +1,116 @@
+What is Spring container?
+-
+
+What is an annotation in java?
+-An annotation in Java is a special form of metadata that provides data about a program but is not part of the program itself.
+Purpose:
+Annotations can serve various purposes, including:
+	-Providing information to the compiler (e.g., @Override checks if a method is correctly overriding a superclass method).
+	-Supplying metadata for frameworks (e.g., @Entity in JPA indicates that a class is a database entity).
+
+Annotations we have used in our project:
+
+1. @Controller
+Purpose: Indicates that a class is a Spring MVC controller, handling web requests and returning views.
+Usage: Used to define the controller component in a web application, typically combined with @RequestMapping for request handling.
+
+2. @Autowired
+Purpose: Indicates that a field, constructor, or method should be automatically injected by the Spring container.
+Usage: Simplifies dependency injection by automatically wiring beans based on type.
+
+3. @RequestMapping
+Purpose: Maps HTTP requests to specific handler methods in a controller.
+Usage: Can be used at the class or method level to define the URL path and HTTP methods (GET, POST, etc.) that the method will handle.
+
+4. @PostMapping
+Purpose: A specialized version of @RequestMapping for handling HTTP POST requests.
+Usage: Used to annotate methods in a controller that process POST requests.
+
+5. @GetMappingl
+Purpose: A specialized version of @RequestMapping for handling HTTP GET requests.
+Usage: Used to annotate methods that retrieve data or render views in response to GET requests.
+
+6. @RequestParam
+Purpose: Binds a method parameter to a web request parameter.
+Usage: Used in controller methods to extract query parameters or form data from the request.
+
+7. @ControllerAdvice
+Purpose: A global exception handler that allows you to handle exceptions across all controllers in a centralized manner.
+Usage: Can be used to define common exception handling logic or to apply model attributes across controllers.
+
+8. @ExceptionHandler
+Purpose: Indicates a method that handles specific exceptions thrown by controller methods.
+Usage: Used within a controller or @ControllerAdvice to define custom error responses.
+
+9. @CookieValue
+Purpose: Binds a method parameter to an HTTP cookie value.
+Usage: Used in controller methods to access cookie data sent with requests.
+
+10. @Entity
+Purpose: Specifies that a class is an entity and will be mapped to a database table.
+Usage: Used in JPA (Java Persistence API) to define a persistent class.
+
+11. @Table
+Purpose: Specifies the details of the table to which an entity will be mapped.
+Usage: Used to define the table name and other properties like schema.
+
+12. @Id
+Purpose: Denotes the primary key of an entity.
+Usage: Used to specify the unique identifier for an entity in a database.
+
+13. @GeneratedValue(strategy = GenerationType.IDENTITY)
+Purpose: Specifies the strategy for generating primary key values automatically.
+Usage: Commonly used to indicate that the database will handle key generation, particularly for auto-increment fields.
+
+14. @Column
+Purpose: Specifies the details of the column to which a field of an entity will be mapped.
+Usage: Used to define properties such as name, nullable, length, and unique constraints.
+
+15. @Transient
+Purpose: Indicates that a field should not be persisted in the database.
+Usage: Used for fields that should be ignored by the persistence provider.
+
+16. @PrePersist
+Purpose: Marks a method to be executed before an entity is persisted (saved) to the database.
+Usage: Commonly used for setting default values or performing validations.
+
+17. @Override
+Purpose: Indicates that a method is overriding a method from a superclass.
+Usage: Used for clarity and to ensure that the superclass method is being correctly overridden.
+
+18. @Repository (aka DAO)
+Purpose: Indicates that a class is a data access object (DAO) and should be managed by Spring.
+Usage: Used to encapsulate database access logic and exception handling.
+
+19. @Modifying
+Purpose: Indicates that a query method is modifying the database (e.g. UPDATE, DELETE).
+Usage: Used in conjunction with @Query for executing data modification queries.
+
+20. @Query
+Purpose: Defines a custom JPQL or SQL query for a repository method.
+Usage: Allows for more complex queries beyond standard CRUD operations.
+
+21. @Transactional
+Purpose: Indicates that a method or class should be executed within a transactional context.
+Usage: Used to manage transactions, ensuring that all operations within the scope either complete successfully or roll back.
+
+22. @Service
+Purpose: Indicates that a class is a service component in the service layer of the application.
+Usage: Used to encapsulate business logic and make it accessible to controllers.
+
+Why service layer should be used?
+-Here are several reasons why using a service layer is beneficial:
+1. Separation of Concerns
+	Encapsulation: The service layer encapsulates business logic, separating it from presentation logic (controllers) and data access logic (repositories).
+
+	Maintainability: This separation makes the application easier to maintain and understand, as each layer has distinct responsibilities.
+
+2. Reusability
+	Shared Logic: Business logic can be reused across different parts of the application, such as multiple controllers, without duplicating code.
+
+	Centralized Functions: By centralizing common functionality in service classes, you promote code reuse and reduce redundancy.
+
+3. Testability
+	Isolation: The service layer can be tested independently from the web layer (controllers) and data layer (repositories), making unit testing simpler and more focused.
+	
+	Mocking Dependencies: It allows for easier mocking of dependencies in tests, facilitating better testing practices.

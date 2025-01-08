@@ -1,0 +1,89 @@
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1001; /* Ensure modal is above the rest of the content */
+    border-radius: 8px;
+    display: block; /* Initially hidden */
+    color: #C78A00;
+}
+
+.modal-content {
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+}
+/* Modal styles */
+.modals {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0); /* Black background with opacity */
+    background-color: rgba(0,0,0,0.4); /* Fallback for older browsers */
+}
+
+.modals-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+.button-container {
+    margin-top: 20px;
+}
+button {
+    margin: 0 10px;
+}
+
+
+/* Warning-like class for confirm button */
+.btn-warning {
+    background-color: #ffc107; /* Bootstrap-style warning color */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-warning:hover {
+    background-color: #e0a800; /* Darker shade for hover */
+}
+
+/* Cancel-like class for cancel button */
+.btn-cancel {
+    background-color: #6c757d; /* Bootstrap-style secondary color */
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-cancel:hover {
+    background-color: #5a6268; /* Darker shade for hover */
+}
+
+/* For the confirmation box */
+.confirmation-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    width: 300px;
+}

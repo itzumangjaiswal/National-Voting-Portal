@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="images/favicon.png" type="image/x-icon">
+    <title>ECI | Regional Officer</title>
+    <link rel="stylesheet" href="./css/admin_dashboard.css">
+</head>
+<body>
+<!-- Header -->
+<div id="header"></div> <!-- Header will be loaded here -->
+
+
+<!-- Dashboard Body Section with gradient background and centered container -->
+<div class="dashboard-body">
+
+    <div class="container">
+        <!-- Horizontal button bar -->
+        <div class="button-bar">
+
+            <button class="tab-button active" data-section="addSubAdminTables">Consolidated Information</button>
+            <button class="tab-button" data-section="modifyCandidate">Voter Management</button>
+            <button class="tab-button" data-section="addCandidate">Manage Candidate</button>
+            <button class="tab-button" data-section="subAdminProfile">Profile</button>
+             <button class="tab-button" data-section="publishResult">Completed Elections</button>
+        </div>
+
+        <!-- Section where iframes will be displayed -->
+        <div class="section-content">
+
+            <!-- Content for Consolidated Info -->
+            <div id="addSubAdminTables" class="table-section active">
+                <iframe src="/subAdmin/info" title="SubAdmin Tables" width="100%" height="600"
+                        style="border:none;"></iframe>
+            </div>
+
+            <!-- Content for Voter List -->
+            <div id="modifyCandidate" class="table-section">
+                <iframe src="/subAdmin/voter-info" title="Modify Candidate" width="100%" height="600"
+                        style="border:none;"></iframe>
+            </div>
+
+            <!-- Content for Add Candidate -->
+            <div id="addCandidate" class="table-section">
+                <iframe src="/candidate/registration-form" title="Add Candidate" width="100%" height="600"
+                        style="border:none;"></iframe>
+            </div>
+
+<!--           Content for profile-->
+            <div id="subAdminProfile" class="table-section">
+                <iframe src="/user/profile" title="Profile" width="100%" height="600"
+                        style="border:none;"></iframe>
+            </div>
+            
+            <!-- Content for Publish Result -->
+              <div id="publishResult" class="table-section">
+                <iframe src="/subAdmin/publishResult" title="Profile" width="100%" height="600"
+                        style="border:none;"></iframe>
+            </div>
+
+            
+
+
+
+        </div>
+    </div>
+</div>
+
+<script src="js/dashboard.js"></script>
+<script type="module" src="js/loadHeader.js"></script>
+
+</body>
+</html>

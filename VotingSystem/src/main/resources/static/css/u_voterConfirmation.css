@@ -1,0 +1,166 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+h2{
+    background-color: #f2f2f2;
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+    border-left: 4px #C78A00 solid;
+    border-radius: 4px;
+}
+
+.profile-container {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+}
+
+.left-section, .right-section {
+    padding: 20px;
+}
+
+.left-section {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    border-right: 1px solid #ccc;
+}
+
+.right-section {
+    width: 70%;
+    padding-left: 40px;
+}
+
+
+.profile-picture img {
+    width: 210px;
+    height: 210px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #ccc;
+    margin-top: 50px;
+}
+.btn {
+    border-radius: 5px;
+}
+/* Flex container for candidate details and image */
+.profile-info-wrapper {
+    display: flex;
+    justify-content: space-between; /* Ensures image moves to the far right */
+    align-items: center; /* Vertically center-align image and details */
+    margin-top: 20px;
+}
+
+/* Styling for the image in the right section */
+.profile-picture-right img {
+    width: 240px;
+    height: 230px;
+    border-radius: 50%;
+    object-fit: cover; /* Ensures the image maintains aspect ratio */
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+.profile-details h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.profile-info {
+    margin-bottom: 15px;
+    margin-top: 5%;
+}
+
+label {
+    font-weight: bold;
+    margin-top: 2%;
+}
+
+p {
+    display: inline;
+    margin-left: 10px;
+    font-size: 1rem;
+    margin-top: 2.5%;
+
+}
+
+.confirmation-buttons {
+    display: flex;
+    justify-content: center;     /* Align buttons horizontally in the center */
+    margin-top: 155px;            /* Pushes the buttons down */
+
+}
+
+.confirmation-buttons .btn {
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0px 139px;
+}
+
+#yesButton {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    width: 117px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;    /* Green color for Vote button */
+}
+
+#yesButton:hover {
+    background-color: #196337; /* Darker shade of green on hover */
+}
+
+#noButton {
+    background-color:#FF6666 ;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px; /* Light red color for Go Back button */
+}
+
+#noButton:hover {
+    background-color: red;        /* Bright red on hover */
+}
+
+
+
+.spinner {
+    border: 4px solid rgba(0, 0, 0, 0.2);
+    border-top: 4px solid #000;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    display: inline-flex;
+    animation: spin 1s linear infinite;
+    margin-left: 10px; /* Space between text and spinner */
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Disabled button style (optional) */
+#yesButton:disabled {
+    cursor: not-allowed;
+    opacity: 0.4;
+}

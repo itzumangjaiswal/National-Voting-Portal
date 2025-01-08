@@ -1,0 +1,63 @@
+.alert-box {
+    padding: 15px;
+    margin: 30px;
+    border-radius: 4px;
+    font-family: Arial, sans-serif;
+    align-items: center;
+    justify-content: start;
+    color: #333;
+    font-size: 1rem;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+    position: relative;
+    width: 70%;
+}
+/* Success alert box */
+.alert-box.success {
+    background-color: #d4edda; /* Light green background */
+    border-left: 5px solid #155724; /* Dark green border-left */
+    color: #155724; /* Dark green text */
+}
+
+/* Failed alert box */
+.alert-box.failed {
+    background-color: #f8d7da; /* Light red background */
+    border-left: 5px solid #721c24; /* Dark red border-left */
+    color: #721c24; /* Dark red text */
+}
+
+.alert-box p {
+    margin: 0;
+    padding-left: 10px;
+    line-height: 2;
+}
+
+
+/* Close button (X) */
+.close-btn {
+    background-color: transparent;
+    border: none;
+    color: #333;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    transition: transform 0.8s ease;
+}
+
+.close-btn:hover{
+    transform: rotate(90deg);
+}
+
+
+/* Adjust color of close button for success alert */
+.alert-box.success .close-btn {
+    color: #155724; /* Dark green */
+}
+
+/* Adjust color of close button for failed alert */
+.alert-box.failed .close-btn {
+    color: #721c24; /* Dark red */
+}

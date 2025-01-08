@@ -1,0 +1,163 @@
+<head>
+    <link rel="stylesheet" href="css/forms.css">
+    <link rel="icon" href="images/favicon.png" type="image/x-icon">
+    <title>ECI | Voter Registration</title>
+</head>
+<body>
+<!-- Header -->
+<div id="header"></div> <!-- Header will be loaded here -->
+
+<h2 style="color: black">Voter Registration Form</h2>
+
+<form id="voterForm" action="/user/voter-registration" method="post" enctype="multipart/form-data"
+      onsubmit="return validate()">
+
+    <!-- Name -->
+    <label for="name">Full Name:</label>
+    <input type="text" id="name" name="name" placeholder="Enter your full name" >
+
+    <!-- Email -->
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" placeholder="Enter your email" >
+
+    <!-- 12-Digit Number (Aadhar) -->
+    <label for="aadharNumber">Aadhar Number:</label>
+    <input type="text" id="aadharNumber" name="aadharNumber" placeholder="e.g. 123456789012" maxlength="12" >
+
+    <!-- Profile Picture -->
+    <label for="profilePic">Profile Picture:</label>
+    <input type="file" id="profilePic" name="profilePic" accept="image/*" >
+
+    <!-- Password -->
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" placeholder="Enter your password" >
+    <div id="passwordTip" style="display:none; color: #f36a6a;">
+        <ul>
+            <li>Password should be at least 8 characters long</li>
+            <li>At least one special character</li>
+            <li>At least one number</li>
+            <li>At least one uppercase letter</li>
+            <li>At least one lowercase letter</li>
+        </ul>
+    </div>
+
+    <!-- Confirm Password -->
+    <label for="confirmPassword">Confirm Password:</label>
+    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" >
+
+    <!-- Submit and Reset Button -->
+    <div class="button-container">
+        <button type="reset" id="resetButton">Reset</button>
+        <button type="submit" id="submitButton">Submit</button>
+    </div>
+
+    <!-- Alert Messages -->
+    <div class="alert-position">
+        <div class="alert-box failed" id="failedAlert" style="display:none;">
+            <button class="close-btn" onclick="closeAlert('failedAlert')">&times;</button>
+            <p id="errorMessage" style="font-weight: bold"></p>
+        </div>
+        <div class="alert-box success" id="successAlert" style="display:none;">
+            <button class="close-btn" onclick="closeAlert('successAlert')">&times;</button>
+            <p><strong>Success!</strong> Your form has been submitted successfully.</p>
+        </div>
+    </div>
+
+</form>
+
+<script>
+    const submitButton = document.getElementById('submitButton');
+    const form = document.getElementById('voterForm');
+
+    // Display password tip when focusing on password field
+    document.getElementById('password').addEventListener('focus', () => {
+        document.getElementById('passwordTip').style.display = 'block';
+    });
+
+    // Hide password tip when focusing out of password field
+    document.getElementById('password').addEventListener('blur', () => {
+        document.getElementById('passwordTip').style.display = 'none';
+    });
+
+    // Form validation
+    function validate() {
+
+        let errorMessage = '';
+
+        // Validate fields
+        if (!document.getElementById('name').value) {
+            errorMessage += '<br>Full Name is required.<br>';
+        }else if(document.getElementById('name').value.length <=3){
+            errorMessage += '<br>Length of Full Name should be greater than 3.<br>'
+        }
+        if (!document.getElementById('email').value) {
+            errorMessage += '<br>Email is required.<br>';
+        }
+        if (!document.getElementById('aadharNumber').value) {
+            errorMessage += '<br>Aadhar Number is required.<br>';
+        } else if (document.getElementById('aadharNumber').value.length < 12) {
+            errorMessage += '<br>Aadhar Number must be of 12 digits.<br>';
+        }
+        if (!document.getElementById('profilePic').files || document.getElementById('profilePic').files.length === 0){
+            errorMessage += '<br>Profile Picture is required.<br>'
+        }
+        if (!document.getElementById('password').value) {
+            errorMessage += '<br>Password is required.<br>';
+        } else {
+            errorMessage += validatePassword(document.getElementById('password').value)
+        }
+        if (document.getElementById('password').value !== document.getElementById('confirmPassword').value) {
+            errorMessage += '<br>Passwords do not match.<br>';
+        }
+
+        if(errorMessage){
+
+            document.getElementById('errorMessage').innerHTML = errorMessage;
+            document.getElementById('failedAlert').style.display = 'flex';
+            return false
+        }
+
+
+        // Proceed with form submission
+        submitButton.innerHTML = 'Submitting... <div class="spinner"></div>';
+        submitButton.disabled = true;
+        document.getElementById('failedAlert').style.display = 'none !important;';  // Hide error alert if no error
+        return true;
+
+
+    }
+
+    function closeAlert(alertId) {
+        document.getElementById(alertId).style.display = 'none';
+    }
+
+    function validatePassword(password) {
+        const minLength = 8;
+        const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/;
+        const hasDigit = /\d/;
+        const hasUppercase = /[A-Z]/;
+        const hasLowercase = /[a-z]/;
+
+        if (password.length < minLength) {
+            return "Password must be at least 8 characters long.";
+        }
+        if (!hasSpecialChar.test(password)) {
+            return "Password must contain at least one special character.";
+        }
+        if (!hasDigit.test(password)) {
+            return "Password must contain at least one digit.";
+        }
+        if (!hasUppercase.test(password)) {
+            return "Password must contain at least one uppercase letter.";
+        }
+        if (!hasLowercase.test(password)) {
+            return "Password must contain at least one lowercase letter.";
+        }
+
+        return ""
+    }
+
+</script>
+<script type="module" src="js/loadHeader.js"></script>
+
+</body>
